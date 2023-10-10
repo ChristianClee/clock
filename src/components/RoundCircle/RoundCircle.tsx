@@ -6,7 +6,7 @@ import Message from './components/Message';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { selectClock } from '../../redux/slices/clockSlice';
 import { useActions } from '../../hooks/reduxHook';
-import  "boxicons" 
+import { restart, stop  } from "./utilits/functions"
 
 
 
@@ -49,14 +49,30 @@ const RoundCircle: React.FC = () => {
     ,
     stop:
       <button className='tableManagment__button tableManagment__button_stop'
-        onClick={stop}
+        onClick={() => stop(
+          move,
+          setStatusButtons,
+          flag,
+          matches.stopClick
+        )}
       >
         stop
       </button>
     ,
     reset:
       <button className='tableManagment__button tableManagment__button_reset'
-        onClick={restart}
+        onClick={() => restart(outerArrow,
+          innerArrow,
+          littleArrowDeg,
+          bigArrowDeg,
+          countLoop,
+          cleanMessagesStore,
+          cleanMessages,
+          setMessageDate,
+          matches.resetClick,
+          millseconds,
+          millsecondsTime
+        )}
       >
         reset
       </button>
@@ -119,26 +135,24 @@ const RoundCircle: React.FC = () => {
       setStatusButtons(matches.startClick)
     }  
   } 
-  function stop() {
-    clearInterval(move)
-    setStatusButtons(matches.stopClick)
-    flag = false
-  }
-  function restart() {
-    bigArrowDeg.current = 45
-    if (outerArrow.current && innerArrow.current) {
-      outerArrow.current.style.transform = `rotate(${45}deg)`
-      innerArrow.current.style.transform = `rotate(${0}deg)`
-    }
-    littleArrowDeg.current = 0
-
-
-    clearDisplay()
-    setStatusButtons(matches.resetClick)
-    cleanMessagesStore()
-    cleanMessages()
-    countLoop.current = 0
-  }
+  // function stop() {
+  //   clearInterval(move)
+  //   setStatusButtons(matches.stopClick)
+  //   flag = false
+  // }
+  // function restart() {
+  //   bigArrowDeg.current = 45
+  //   if (outerArrow.current && innerArrow.current) {
+  //     outerArrow.current.style.transform = `rotate(${45}deg)`
+  //     innerArrow.current.style.transform = `rotate(${0}deg)`
+  //   }
+  //   littleArrowDeg.current = 0
+  //   clearDisplay()
+  //   setStatusButtons(matches.resetClick)
+  //   cleanMessagesStore()
+  //   cleanMessages()
+  //   countLoop.current = 0
+  // }
   function loop() {
     countLoop.current += 1
     const data = { count: "", timeNow: "", lag: "", lagFirst :""}
@@ -182,13 +196,13 @@ const RoundCircle: React.FC = () => {
     const minuets = addZerro(Math.floor(time / 100 / 60))
     return `${minuets}:${seconds}:${tenthSec}`
   }
-  function clearDisplay() {
+  // function clearDisplay() {
 
-    millseconds.current = 0
-    if (millsecondsTime.current) {
-      millsecondsTime.current.textContent = '00:00:00'
-    }
-    }
+  //   millseconds.current = 0
+  //   if (millsecondsTime.current) {
+  //     millsecondsTime.current.textContent = '00:00:00'
+  //   }
+  //   }
    
   function getDifference(last:number, old:number):string {
     let difference = last - old
