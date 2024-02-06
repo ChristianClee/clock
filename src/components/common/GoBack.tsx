@@ -8,13 +8,12 @@ const GoBack: React.FC = () => {
 
 
   return (
-    <div
+    <a
+      href='https://christianclee.github.io/containerPortfolio/'
       className={style.wrapper}
-      onClick={() => {
-      }}
     >
       <GoBackSVG className={style.picture} />
-    </div>
+    </a>
    
   );
 }

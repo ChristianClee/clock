@@ -3,7 +3,6 @@ import logo from '../../assets/pictures/jpg/myPicture.png'
 
 
 
-
 const Header: React.FC = () => {
   const clock1 = useRef <HTMLAnchorElement>(null!)
   const clock2 = useRef <HTMLAnchorElement>(null!)
@@ -15,21 +14,17 @@ const Header: React.FC = () => {
   return (
     <>
       <header className='header'>
-        <div className='header__logo'>
-          <div className='header__logo-picture'>
-            <img className='ibg' src={logo} alt="no-picture" />
+        <div className='container'>
+          <div className='header__logo'>
+            <div className='header__logo-picture'>
+              <img className='ibg' src={logo} alt="no-picture" />
+            </div>
+            <h4>Ilya</h4>
           </div>
-          <h4>Ilya</h4>
-          <div className='header__container-contacts'>
-            <p>8-977-439-34-18</p>
-            <p>ilya.mishkov@gmail.com</p>
-          </div>
-          
+          <nav className='header__nav'>
+          </nav>
         </div>
-        <nav className='header__nav'>
-        </nav>
       </header>
-
     </>
     
   );

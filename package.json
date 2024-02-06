@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://christianclee.github.io/Clocks/",
+  "homepage": "https://christianclee.github.io/clock/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@types/node": "^16.18.39",

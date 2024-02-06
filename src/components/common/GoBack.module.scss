@@ -1,11 +1,12 @@
 $size: 4rem;
 .wrapper{
-position: relative;
-width: $size;
-height: $size;
-  &:hover .picture{
-    fill: rgb(193, 34, 34);
-  }
+  display: block;
+  position: relative;
+  width: $size;
+  height: $size;
+    &:hover .picture{
+      fill: rgb(193, 34, 34);
+    }
 }
 .picture{
   position: absolute;
